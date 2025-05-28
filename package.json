@@ -37,7 +37,8 @@
 		"@capacitor/android": "^7.0.1",
 		"@capacitor/core": "^7.0.1",
 		"@capacitor/filesystem": "^7.0.0",
-		"bootstrap": "^5.3.3",
+		"@popperjs/core": "^2.11.8",
+		"bootstrap": "^5.3.6",
 		"bootstrap-icons": "^1.11.3",
 		"drizzle-orm": "^0.40.0",
 		"sql.js": "^1.12.0"

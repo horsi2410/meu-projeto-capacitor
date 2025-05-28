@@ -5,25 +5,31 @@
   import ToDoList from '$lib/components/ToDoList.svelte';
   import * as bootstrap from 'bootstrap';
 
-  let novaTarefa = $state('');
-  let tarefas = $state([]);
-  let tarefasPendentes = $derived(tarefas.filter(tarefa => tarefa.status == 0));
-  let tarefasConcluidas = $derived(tarefas.filter(tarefa => tarefa.status == 1));
-  let conteudoTarefaEditando = $state('');
-  let tarefaEditando = $state();
+  let novaTarefa = '';
+  let tarefas = [];
+  let tarefaEditando;
+  let conteudoTarefaEditando = '';
   let tarefaExcluindo;
-  let mostrarModal = $state(false);
   let mensagemToast;
+  let filtro = 'todas'; // opções: 'todas', 'pendentes', 'concluidas'
 
-  async function adicionarTarefa() {
+  function adicionarTarefa(event) {
+    event.preventDefault();
     novaTarefa = novaTarefa.trim();
     if (!novaTarefa) {
-      mensagemToast.show(); 
-      return; 
+      mensagemToast.show();
+      return;
     }
-    
-    tarefas.push({ id: Date.now(), conteudo: novaTarefa, status: 0 }); // Adiciona um id único para cada tarefa
-    novaTarefa = ''; 
+    tarefas = [...tarefas, { conteudo: novaTarefa, status: 0 }];
+    novaTarefa = '';
+  }
+
+  function marcarTodasComo(status) {
+    tarefas = tarefas.map(t => ({ ...t, status }));
+  }
+
+  function definirFiltro(opcao) {
+    filtro = opcao;
   }
 
   function editarTarefa(tarefa) {
@@ -32,101 +38,84 @@
   }
 
   function confirmarEdicao() {
-    if (!conteudoTarefaEditando.trim()) {
+    conteudoTarefaEditando = conteudoTarefaEditando.trim();
+    if (!conteudoTarefaEditando) {
       mensagemToast.show();
       return;
     }
-    
-    tarefaEditando.conteudo = conteudoTarefaEditando.trim();
-    tarefaEditando = undefined; 
+    tarefaEditando.conteudo = conteudoTarefaEditando;
+    cancelarEdicao();
   }
 
   function cancelarEdicao() {
-    tarefaEditando = undefined; 
-  }
-
-  function excluirTarefa(tarefa) {
-    tarefaExcluindo = tarefa;
-    mostrarModal.set(true); // Exibe o modal para confirmação
-  }
-
-  function confirmarExclusao() {
-    tarefas.set(tarefas.filter(tarefa => tarefa !== tarefaExcluindo)); // Atualiza o estado de tarefas
-    tarefaExcluindo = undefined;
-    mostrarModal.set(false); // Esconde o modal após a exclusão
+    tarefaEditando = undefined;
+    conteudoTarefaEditando = '';
   }
 
   function alterarStatus(tarefa, status) {
     tarefa.status = status;
+    tarefas = [...tarefas];
+  }
+
+  function excluirTarefa(tarefa) {
+    tarefaExcluindo = tarefa;
+  }
+
+  function confirmarExclusao() {
+    tarefas = tarefas.filter(t => t !== tarefaExcluindo);
+    tarefaExcluindo = undefined;
   }
 
   onMount(() => {
-    mensagemToast = new bootstrap.Toast('#mensagemToast');
+    mensagemToast = new bootstrap.Toast(document.querySelector('#mensagemToast'));
   });
 </script>
 
 <div class="fixed-top pt-5" style="z-index: 1020;">
-  <form class="container-fluid input-group px-4 pt-3" onsubmit={adicionarTarefa}>
-    <input class="form-control form-control-lg" placeholder="Nova tarefa" bind:value={novaTarefa} />
-    <button type="submit" class="btn btn-primary input-group-text" aria-label="adicionar"> 
-      <i class="bi bi-plus-lg"></i> 
+  <form class="container-fluid input-group px-4 pt-3" on:submit={adicionarTarefa}>
+    <input
+      class="form-control form-control-lg"
+      placeholder="Nova tarefa"
+      bind:value={novaTarefa}
+    />
+    <button type="submit" class="btn btn-primary input-group-text" aria-label="adicionar">
+      <i class="bi bi-plus-lg"></i>
     </button>
   </form>
-  <Toast msg={'Digite algo!'} />
+  <Toast id="mensagemToast" msg="Digite algo!" />
 </div>
 
 <div class="container-fluid mt-5 pt-3">
-  <ToDoList 
-    tarefas={tarefasPendentes} 
-    {tarefaEditando} 
-    bind:conteudoTarefaEditando 
-    {editarTarefa} 
-    {confirmarEdicao} 
-    {cancelarEdicao} 
-    {alterarStatus} 
-    {excluirTarefa} 
-  />
-  <hr />
-  <ToDoList 
-    tarefas={tarefasConcluidas} 
-    {tarefaEditando} 
-    bind:conteudoTarefaEditando 
-    {editarTarefa} 
-    {confirmarEdicao} 
-    {cancelarEdicao} 
-    {alterarStatus} 
-    {excluirTarefa} 
+  <div class="dropdown mb-3">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Opções
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" on:click={() => marcarTodasComo(1)}>Marcar todas como concluídas</a></li>
+      <li><a class="dropdown-item" on:click={() => marcarTodasComo(0)}>Marcar todas como pendentes</a></li>
+      <li><a class="dropdown-item" on:click={() => definirFiltro('pendentes')}>Exibir pendentes no topo</a></li>
+      <li><a class="dropdown-item" on:click={() => definirFiltro('concluidas')}>Exibir concluídas no topo</a></li>
+      <li><a class="dropdown-item" on:click={() => definirFiltro('todas')}>Exibir todas no topo</a></li>
+    </ul>
+  </div>
+
+  <ToDoList
+    tarefas={
+      filtro === 'todas'
+        ? tarefas
+        : [
+            ...tarefas.filter(t => t.status === (filtro === 'pendentes' ? 0 : 1)),
+            ...tarefas.filter(t => t.status !== (filtro === 'pendentes' ? 0 : 1))
+          ]
+    }
+    {tarefaEditando}
+    bind:conteudoTarefaEditando
+    {editarTarefa}
+    {confirmarEdicao}
+    {cancelarEdicao}
+    {alterarStatus}
+    {excluirTarefa}
   />
 </div>
 
-{#if mostrarModal}
-  <Modal msg="Deseja excluir a tarefa?" acao={confirmarExclusao} />
-{/if}
-
-{#each tarefasPendentes as tarefa (tarefa.id)}
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id={`dropdownMenuButton-${tarefa.id}`} data-bs-toggle="dropdown" aria-expanded="false">
-      Ações
-    </button>
-    <ul class="dropdown-menu" aria-labelledby={`dropdownMenuButton-${tarefa.id}`}>
-      <li><button class="dropdown-item" onclick={() => editarTarefa(tarefa)}>Editar</button></li>
-      <li><button class="dropdown-item" onclick={() => excluirTarefa(tarefa)}>Excluir</button></li>
-      <li><button class="dropdown-item" onclick={() => alterarStatus(tarefa, 1)}>Marcar como Concluída</button></li>
-      <li><button class="dropdown-item" onclick={() => alterarStatus(tarefa, 0)}>Marcar como Pendência</button></li>
-    </ul>
-  </div>
-{/each}
-
-{#each tarefasConcluidas as tarefa (tarefa.id)}
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id={`dropdownMenuButton-${tarefa.id}`} data-bs-toggle="dropdown" aria-expanded="false">
-      Ações
-    </button>
-    <ul class="dropdown-menu" aria-labelledby={`dropdownMenuButton-${tarefa.id}`}>
-      <li><button class="dropdown-item" onclick={() => editarTarefa(tarefa)}>Editar</button></li>
-      <li><button class="dropdown-item" onclick={() => excluirTarefa(tarefa)}>Excluir</button></li>
-      <li><button class="dropdown-item" onclick={() => alterarStatus(tarefa, 1)}>Marcar como Concluída</button></li>
-      <li><button class="dropdown-item" onclick={() => alterarStatus(tarefa, 0)}>Marcar como Pendência</button></li>
-    </ul>
-  </div>
-{/each}
+<Modal msg="Deseja excluir a tarefa?" acao={confirmarExclusao} />
