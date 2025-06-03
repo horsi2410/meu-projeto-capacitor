@@ -1,4 +1,4 @@
-<div class="text-center">
+<div class="text-center mt-3">
     <input class = 'form-control'>
 <table class= ' table table-boderless'>
     <tbody>
