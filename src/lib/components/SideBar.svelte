@@ -7,6 +7,8 @@
       <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
         <li class="nav-item"><a class="nav-link active" href="/todolist">Lista de Tarefas</a></li>
         <li class="nav-item"><a class="nav-link active" href="/senha">Gerador de Senhas</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/calculadora">Calculadora</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/unidades">Conversor de unidades</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown">Dropdown</a>
           <ul class="dropdown-menu">
