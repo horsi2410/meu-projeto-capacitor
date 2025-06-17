@@ -1,388 +1,102 @@
 export const dicionario = [
-  { 
-    palavra: '🍐 Abacate', 
-    definicoes: [
-      'Fruto com polpa cremosa e rica em gorduras saudáveis, originário da América Central.',
-      'Usado em saladas, guacamole e como acompanhamento em diversos pratos.'
-    ] 
-  },
-  { 
-    palavra: '🍍 Abacaxi', 
-    definicoes: [
-      'Fruta tropical com casca espinhosa e polpa doce e suculenta.',
-      'Usada em sucos, sobremesas e pratos salgados.'
-    ] 
-  },
-  { 
-    palavra: '❤️ Amor', 
-    definicoes: [
-      'Sentimento profundo de afeto e carinho por outra pessoa, que pode se manifestar de várias formas.',
-      'O amor é um tema central em muitas obras de arte, literatura e música.'
-    ] 
-  },
-  { 
-    palavra: '🤝 Amigo', 
-    definicoes: [
-      'Pessoa com quem se tem uma relação de afeto, confiança e companheirismo.',
-      'Os amigos são importantes para o suporte emocional e social.'
-    ] 
-  },
-  { 
-    palavra: '🍌 Banana', 
-    definicoes: [
-      'Fruta tropical, alongada e de casca amarela quando madura, rica em potássio.',
-      'Comumente consumida in natura ou utilizada em sobremesas e vitaminas.'
-    ] 
-  },
-  { 
-    palavra: '⚽ Bola', 
-    definicoes: [
-      'Objeto esférico usado em diversos esportes e brincadeiras, como futebol e basquete.',
-      'As bolas podem ser feitas de diferentes materiais, como borracha ou couro.'
-    ] 
-  },
-  { 
-    palavra: '⚪ Branco', 
-    definicoes: [
-      'Cor clara, frequentemente associada à pureza, paz e simplicidade.',
-      'Usado em diversas culturas como símbolo de novos começos.'
-    ] 
-  },
-  { 
-    palavra: '🐶 Cachorro', 
-    definicoes: [
-      'Mamífero doméstico, conhecido como o melhor amigo do homem, com diversas raças.',
-      'Usado como animal de estimação, para companhia e em atividades de trabalho.'
-    ] 
-  },
-  { 
-    palavra: '☕ Café', 
-    definicoes: [
-      'Bebida feita a partir dos grãos torrados da planta cafeeira, apreciada em todo o mundo.',
-      'O café é conhecido por suas propriedades estimulantes devido à cafeína.'
-    ] 
-  },
-  { 
-    palavra: '🏠 Casa', 
-    definicoes: [
-      'Edificação onde as pessoas moram, que pode variar em tamanho e estilo.',
-      'As casas podem ser unifamiliares, multifamiliares ou apartamentos.'
-    ] 
-  },
-  { 
-    palavra: '🚗 Carro', 
-    definicoes: [
-      'Veículo com rodas utilizado para transporte pessoal, movido por motor.',
-      'Existem diferentes tipos, como sedãs, SUVs e caminhonetes.'
-    ] 
-  },
-  { 
-    palavra: '💃 Dança', 
-    definicoes: [
-      'Movimento do corpo em ritmo musical, que pode ser uma forma de expressão artística.',
-      'Existem diversos estilos de dança, como ballet, salsa e hip-hop.'
-    ] 
-  },
-  { 
-    palavra: '🍭 Doce', 
-    definicoes: [
-      'Alimento saboroso, geralmente rico em açúcar, que pode ser consumido como sobremesa.',
-      'Existem diversos tipos, como balas, chocolates e bolos.'
-    ] 
-  },
-  { 
-    palavra: '🤒 Doente', 
-    definicoes: [
-      'Pessoa que está com alguma enfermidade ou condição de saúde debilitante.',
-      'Os doentes podem necessitar de cuidados médicos e apoio emocional.'
-    ] 
-  },
-  { 
-    palavra: '🐘 Elefante', 
-    definicoes: [
-      'Maior mamífero terrestre, conhecido por sua tromba longa e presas de marfim.',
-      'Habita principalmente savanas e florestas, e é um símbolo de sabedoria.'
-    ] 
-  },
-  { 
-    palavra: '⭐ Estrela', 
-    definicoes: [
-      'Corpo celeste que brilha no céu, composto principalmente de gás.',
-      'As estrelas são fundamentais para a formação de galáxias e sistemas solares.'
-    ] 
-  },
-  { 
-    palavra: '😊 Feliz', 
-    definicoes: [
-      'Estado emocional de contentamento e alegria, frequentemente associado a experiências positivas.',
-      'A felicidade é um objetivo comum na vida das pessoas.'
-    ] 
-  },
-  { 
-    palavra: '🔪 Faca', 
-    definicoes: [
-      'Ferramenta com lâmina afiada, utilizada para cortar diversos materiais, especialmente alimentos.',
-      'Existem diferentes tipos, como facas de cozinha, de mesa e de caça.'
-    ] 
-  },
-  { 
-    palavra: '🌸 Flor', 
-    definicoes: [
-      'Parte da planta que contém as estruturas reprodutivas, geralmente colorida e perfumada.',
-      'As flores atraem polinizadores e são usadas em arranjos e decorações.'
-    ] 
-  },
-  { 
-    palavra: '🎉 Festa', 
-    definicoes: [
-      'Evento social para comemoração, que pode incluir música, dança e comida.',
-      'As festas são realizadas em diversas ocasiões, como aniversários e feriados.'
-    ] 
-  },
-  { 
-    palavra: 'gato 🐱', 
-    definicoes: [
-      'Mamífero doméstico, conhecido por sua agilidade e independência, comumente mantido como animal de estimação.',
-      'Possui um comportamento curioso e é famoso por sua habilidade de caçar roedores.'
-    ] 
-  },
-  { 
-    palavra: 'girassol 🌻', 
-    definicoes: [
-      'Planta com flores grandes e amarelas que seguem a direção do sol.',
-      'Usada em jardins e como símbolo de adoração ao sol.'
-    ] 
-  },
-  { 
-    palavra: 'gelo ❄️', 
-    definicoes: [
-      'Água no estado sólido, formada a temperaturas abaixo de zero.',
-      'Usado em bebidas e para conservar alimentos.'
-    ] 
-  },
-  { 
-    palavra: 'hora ⏰', 
-    definicoes: [
-      'Unidade de medida do tempo, equivalente a 60 minutos.',
-      'Usada para organizar atividades diárias e agendar compromissos.'
-    ] 
-  },
-  { 
-    palavra: 'história 📖', 
-    definicoes: [
-      'Relato de eventos passados, que pode ser estudado e interpretado.',
-      'A história é fundamental para entender a evolução da sociedade e da cultura.'
-    ] 
-  },
-  { 
-    palavra: 'hotel 🏨', 
-    definicoes: [
-      'Estabelecimento que oferece hospedagem temporária para viajantes.',
-      'Os hotéis variam em categoria, desde econômicos até luxuosos.'
-    ] 
-  },
-  { 
-    palavra: 'igreja ⛪', 
-    definicoes: [
-      'Lugar de culto religioso, onde os fiéis se reúnem para adorar e praticar sua fé.',
-      'As igrejas podem ter diferentes denominações e estilos arquitetônicos.'
-    ] 
-  },
-  { 
-    palavra: 'ilha 🏝️', 
-    definicoes: [
-      'Porção de terra cercada por água, que pode ser habitada ou desabitada.',
-      'Existem ilhas oceânicas, continentais e fluviais, cada uma com características únicas.'
-    ] 
-  },
-  { 
-    palavra: 'janela 🪟', 
-    definicoes: [
-      'Abertura em uma parede que permite a entrada de luz e ar, geralmente coberta por vidro.',
-      'As janelas podem ser abertas ou fechadas e são importantes para a ventilação.'
-    ] 
-  },
-  { 
-    palavra: 'leão 🦁', 
-    definicoes: [
-      'Felino selvagem, conhecido como o rei da selva, famoso por sua juba e comportamento social em grupos chamados de alcateias.',
-      'Habita principalmente savanas e é um símbolo de força e coragem.'
-    ] 
-  },
-  { 
-    palavra: 'leite 🥛', 
-    definicoes: [
-      'Líquido nutritivo produzido por mamíferos para alimentar seus filhotes.',
-      'Usado em diversas receitas e como bebida, rico em cálcio e proteínas.'
-    ] 
-  },
-  { 
-    palavra: 'limão 🍋', 
-    definicoes: [
-      'Fruta cítrica de sabor ácido, amplamente utilizada na culinária e em bebidas.',
-      'Rico em vitamina C, o limão é conhecido por suas propriedades antioxidantes.'
-    ] 
-  },
-  { 
-    palavra: 'maçã 🍎', 
-    definicoes: [
-      'Fruta comestível, geralmente redonda e de casca vermelha, verde ou amarela.',
-      'Rica em fibras e antioxidantes, é popular em dietas saudáveis.'
-    ] 
-  },
-  { 
-    palavra: 'mel 🍯', 
-    definicoes: [
-      'Substância doce produzida pelas abelhas a partir do néctar das flores.',
-      'Usado como adoçante natural e em diversas receitas culinárias.'
-    ] 
-  },
-  { 
-    palavra: 'navalha 🔪', 
-    definicoes: [
-      'Ferramenta afiada usada para cortar cabelo ou pelos, com lâmina dobrável.',
-      'Usada por barbeiros e em cuidados pessoais.'
-    ] 
-  },
-  { 
-    palavra: 'navio 🚢', 
-    definicoes: [
-      'Grande embarcação projetada para transporte de pessoas ou cargas por água.',
-      'Existem diferentes tipos, como cargueiros, petroleiros e cruzeiros.'
-    ] 
-  },
-  { 
-    palavra: 'nuvem ☁️', 
-    definicoes: [
-      'Massa visível de minúsculas gotas de água ou cristais de gelo suspensos na atmosfera.',
-      'As nuvens desempenham um papel crucial no ciclo da água e no clima.'
-    ] 
-  },
-  { 
-    palavra: 'olho 👁️', 
-    definicoes: [
-      'Órgão da visão, responsável por captar luz e permitir a percepção de imagens.',
-      'Os olhos são essenciais para a interação com o ambiente e a comunicação.'
-    ] 
-  },
-  { 
-    palavra: 'ovo 🥚', 
-    definicoes: [
-      'Reprodução das aves, rico em proteínas e amplamente utilizado na culinária.',
-      'Existem diferentes tipos, como ovos de galinha, codorna e pato.'
-    ] 
-  },
-  { 
-    palavra: 'pão 🍞', 
-    definicoes: [
-      'Alimento básico feito de farinha, água e fermento, assado em forno.',
-      'Existem diversas variedades, como pão francês, integral e de forma.'
-    ] 
-  },
-  { 
-    palavra: 'peixe 🐟', 
-    definicoes: [
-      'Animal aquático que respira por brânquias, encontrado em rios, lagos e oceanos.',
-      'Usado como alimento em diversas culturas, rico em ômega-3.'
-    ] 
-  },
-  { 
-    palavra: 'praia 🏖️', 
-    definicoes: [
-      'Faixa de areia ou cascalho ao longo de um corpo de água, como um mar ou lago.',
-      'As praias são populares para lazer, banhos de sol e esportes aquáticos.'
-    ] 
-  },
-  { 
-    palavra: 'queijo 🧀', 
-    definicoes: [
-      'Produto alimentício feito a partir do leite coagulado, com diversas variedades e sabores.',
-      'Usado em pratos, sanduíches e como aperitivo.'
-    ] 
-  },
-  { 
-    palavra: 'quebra-cabeça 🧩', 
-    definicoes: [
-      'Jogo ou passatempo que consiste em montar uma imagem a partir de peças embaralhadas.',
-      'Estimula o raciocínio lógico e a coordenação motora.'
-    ] 
-  },
-  { 
-    palavra: 'rádio 📻', 
-    definicoes: [
-      'Dispositivo para transmissão e recepção de sons e informações via ondas eletromagnéticas.',
-      'Usado para comunicação e entretenimento, com programação variada.'
-    ] 
-  },
-  { 
-    palavra: 'rio 🌊', 
-    definicoes: [
-      'Curso de água doce que flui em direção a um mar ou lago, essencial para o ecossistema.',
-      'Os rios são importantes para a irrigação, transporte e abastecimento de água.'
-    ] 
-  },
-  { 
-    palavra: 'rosa 🌹', 
-    definicoes: [
-      'Flor conhecida por sua beleza e perfume, frequentemente associada ao amor.',
-      'Existem diversas variedades e cores, cada uma com significados simbólicos.'
-    ] 
-  },
-
-{ 
-  palavra: 'sapo 🐸', 
-  definicoes: [
-    'Anfíbio que vive em ambientes aquáticos e terrestres, conhecido pelo coaxar.',
-    'Os sapos têm uma dieta à base de insetos e desempenham um papel importante no ecossistema.'
-  ] 
-},
-{ 
-  palavra: 'sol ☀️', 
-  definicoes: [
-    'Estrela que é a principal fonte de luz e calor para a Terra.',
-    'Essencial para a vida, é o centro do sistema solar.'
-  ] 
-},
-{ 
-  palavra: 'tigre 🐅', 
-  definicoes: [
-    'Grande felino listrado, nativo da Ásia, conhecido por sua força e agilidade.',
-    'Os tigres são solitários e habitam florestas densas e manguezais.'
-  ] 
-},
-{ 
-  palavra: 'uva 🍇', 
-  definicoes: [
-    'Fruta pequena e redonda, com sabor doce ou ácido, usada na produção de vinhos e sucos.',
-    'Rica em antioxidantes e vitaminas, é consumida fresca ou seca como uva-passa.'
-  ] 
-},
-{ 
-  palavra: 'vulcão 🌋', 
-  definicoes: [
-    'Abertura na crosta terrestre por onde são expelidos lava, gases e cinzas.',
-    'Os vulcões podem ser ativos, inativos ou extintos e influenciam o clima e a geografia.'
-  ] 
-},
-{ 
-  palavra: 'xícara ☕', 
-  definicoes: [
-    'Recipiente usado para servir bebidas quentes, como café ou chá.',
-    'Pode ser feita de diversos materiais, como cerâmica, vidro ou porcelana.'
-  ] 
-},
-{ 
-  palavra: 'yoga 🧘‍♂️', 
-  definicoes: [
-    'Prática que combina exercícios físicos, respiração e meditação para promover equilíbrio e bem-estar.',
-    'Originada na Índia, o yoga é usado para aliviar o estresse e melhorar a flexibilidade.'
-  ] 
-},
-{ 
-  palavra: 'zebra 🦓', 
-  definicoes: [
-    'Animal africano conhecido por sua pelagem listrada em preto e branco.',
-    'As listras ajudam na camuflagem e na identificação entre os membros do grupo.'
-  ] 
-}
+  { palavra: 'Abacate 🍐', definicoes: ['Fruto com polpa cremosa e rica em gorduras saudáveis, originário da América Central.', 'Usado em saladas, guacamole e como acompanhamento em diversos pratos.'] },
+  { palavra: 'Abacaxi 🍍', definicoes: ['Fruta tropical com casca espinhosa e polpa doce e suculenta.', 'Usada em sucos, sobremesas e pratos salgados.'] },
+  { palavra: 'Abelha 🐝', definicoes: ['Inseto responsável pela polinização de flores e pela produção de mel.', 'Essencial para a agricultura e o equilíbrio dos ecossistemas.'] },
+  { palavra: 'Amigo 🤝', definicoes: ['Pessoa com quem se tem uma relação de afeto, confiança e companheirismo.', 'Os amigos são importantes para o suporte emocional e social.'] },
+  { palavra: 'Amor ❤️', definicoes: ['Sentimento profundo de afeto e carinho por outra pessoa, que pode se manifestar de várias formas.', 'O amor é um tema central em muitas obras de arte, literatura e música.'] },
+  { palavra: 'Árvore 🌳', definicoes: ['Planta de grande porte que produz madeira e ajuda na oxigenação do ambiente.', 'Abriga diversas espécies e é fundamental para a vida na Terra.'] },
+  { palavra: 'Banana 🍌', definicoes: ['Fruta tropical, alongada e de casca amarela quando madura, rica em potássio.', 'Comumente consumida in natura ou utilizada em sobremesas e vitaminas.'] },
+  { palavra: 'Bicicleta 🚲', definicoes: ['Veículo de duas rodas movido pelo esforço humano através de pedais.', 'Usada para transporte, lazer e atividade física.'] },
+  { palavra: 'Bola ⚽', definicoes: ['Objeto esférico usado em diversos esportes e brincadeiras, como futebol e basquete.', 'As bolas podem ser feitas de diferentes materiais, como borracha ou couro.'] },
+  { palavra: 'Borboleta 🦋', definicoes: ['Inseto conhecido pelas asas coloridas e ciclo de vida com metamorfose completa.', 'Símbolo de transformação e beleza na natureza.'] },
+  { palavra: 'Branco ⚪', definicoes: ['Cor clara, frequentemente associada à pureza, paz e simplicidade.', 'Usado em diversas culturas como símbolo de novos começos.'] },
+  { palavra: 'Cachoeira 🌊', definicoes: ['Queda d’água natural, onde um rio ou córrego desce abruptamente.', 'Popular em turismo e estudos ambientais.'] },
+  { palavra: 'Cachorrinho 🐕', definicoes: ['Filhote de cachorro, conhecido por sua fofura e energia.', 'Usado como animal de estimação e companheiro.'] },
+  { palavra: 'Cachorro 🐶', definicoes: ['Mamífero doméstico, conhecido como o melhor amigo do homem, com diversas raças.', 'Usado como animal de estimação, para companhia e em atividades de trabalho.'] },
+  { palavra: 'Café ☕', definicoes: ['Bebida feita a partir dos grãos torrados da planta cafeeira, apreciada em todo o mundo.', 'O café é conhecido por suas propriedades estimulantes devido à cafeína.'] },
+  { palavra: 'Canguru 🦘', definicoes: ['Mamífero marsupial nativo da Austrália, conhecido por seu salto e bolsa.', 'Alimenta seus filhotes na bolsa até que estejam prontos para o mundo exterior.'] },
+  { palavra: 'Carro 🚗', definicoes: ['Veículo com rodas utilizado para transporte pessoal, movido por motor.', 'Existem diferentes tipos, como sedãs, SUVs e caminhonetes.'] },
+  { palavra: 'Casa 🏠', definicoes: ['Edificação onde as pessoas moram, que pode variar em tamanho e estilo.', 'As casas podem ser unifamiliares, multifamiliares ou apartamentos.'] },
+  { palavra: 'Céu ☁️', definicoes: ['Espaço visível acima da superfície terrestre, onde ocorrem fenômenos meteorológicos.', 'Pode apresentar cores e formas variadas conforme o clima e a hora do dia.'] },
+  { palavra: 'Cerveja 🍺', definicoes: ['Bebida alcoólica feita a partir da fermentação de cereais, como cevada.', 'Popular em diversas culturas e frequentemente consumida em festas e celebrações.'] },
+  { palavra: 'Chocolate 🍫', definicoes: ['Produto doce feito a partir do cacau, muito apreciado mundialmente.', 'Usado em diversas sobremesas e guloseimas.'] },
+  { palavra: 'Círculo 🔵', definicoes: ['Forma geométrica redonda, sem pontas ou lados definidos.', 'Usado em desenhos, sinalizações e símbolos diversos.'] },
+  { palavra: 'Colher 🥄', definicoes: ['Utensílio de cozinha usado para comer ou servir alimentos líquidos ou pastosos.', 'Feita de metal, plástico ou madeira, com cabo e concavidade.'] },
+  { palavra: 'Computador 💻', definicoes: ['Máquina eletrônica usada para processar informações e realizar tarefas.', 'Essencial para estudos, trabalho e entretenimento.'] },
+  { palavra: 'Copo 🥤', definicoes: ['Recipiente usado para beber líquidos.', 'Pode ser de vidro, plástico ou metal, com diferentes tamanhos.'] },
+  { palavra: 'Coroa 👑', definicoes: ['Objeto usado para simbolizar a realeza, geralmente com pedras preciosas.', 'Simboliza poder, autoridade e liderança.'] },
+  { palavra: 'Coração ❤️', definicoes: ['Órgão vital responsável pela circulação sanguínea no corpo.', 'Simboliza amor e afeto em diversas culturas.'] },
+  { palavra: 'Corrente ⛓️', definicoes: ['Conjunto de elos metálicos ligados entre si.', 'Usada para prender, puxar ou decorar.'] },
+  { palavra: 'Cozinha 🍽️', definicoes: ['Ambiente de uma casa onde se preparam alimentos.', 'Contém fogão, pia, geladeira e utensílios diversos.'] },
+  { palavra: 'Cria', definicoes: ['Filhote de animal ou, informalmente, pessoa jovem.', 'Termo carinhoso ou coloquial para se referir a alguém próximo.'] },
+  { palavra: 'Criança 👶', definicoes: ['Pessoa em fase inicial da vida, entre o nascimento e a adolescência.', 'Requer cuidado, atenção e educação adequada.'] },
+  { palavra: 'Cristal 💎', definicoes: ['Substância sólida com estrutura organizada, muitas vezes brilhante.', 'Usado em joias, decoração e instrumentos científicos.'] },
+  { palavra: 'Cuidado ⚠️', definicoes: ['Ato de atenção para evitar acidentes ou problemas.', 'Pode se referir também a zelo e carinho com alguém.'] },
+  { palavra: 'Dança 💃', definicoes: ['Movimento do corpo em ritmo musical, que pode ser uma forma de expressão artística.', 'Existem diversos estilos de dança, como ballet, salsa e hip-hop.'] },
+  { palavra: 'Dente 🦷', definicoes: ['Parte dura da boca usada para mastigar alimentos.', 'Importante para a fala e a estética do sorriso.'] },
+  { palavra: 'Desenho ✏️', definicoes: ['Representação gráfica feita à mão ou digitalmente.', 'Usado como forma de arte, ensino ou diversão.'] },
+  { palavra: 'Deserto 🏜️', definicoes: ['Região árida com pouca vegetação e escassez de água.', 'Conhecido por temperaturas extremas e paisagens amplas.'] },
+  { palavra: 'Dinheiro 💸', definicoes: ['Meio usado para comprar bens e serviços.', 'Pode ser em papel, moeda ou digital.'] },
+  { palavra: 'Doce 🍭', definicoes: ['Alimento saboroso, geralmente rico em açúcar, que pode ser consumido como sobremesa.', 'Existem diversos tipos, como balas, chocolates e bolos.'] },
+  { palavra: 'Doce 🍬', definicoes: ['Alimento com sabor açucarado, como balas e chocolates.', 'Muito consumido em festas e comemorações.'] },
+  { palavra: 'Doença 🤒', definicoes: ['Alteração da saúde que causa sintomas e desconforto.', 'Pode ser leve ou grave, tratada com cuidados médicos.'] },
+  { palavra: 'Doente 🤒', definicoes: ['Pessoa que está com alguma enfermidade ou condição de saúde debilitante.', 'Os doentes podem necessitar de cuidados médicos e apoio emocional.'] },
+  { palavra: 'Elefante 🐘', definicoes: ['Maior mamífero terrestre, conhecido por sua tromba longa e presas de marfim.', 'Habita principalmente savanas e florestas, e é um símbolo de sabedoria.'] },
+  { palavra: 'Escola 🏫', definicoes: ['Instituição onde se aprende e se ensina.', 'Espaço importante para o crescimento intelectual e social.'] },
+  { palavra: 'Espelho 🪞', definicoes: ['Objeto que reflete a imagem de quem está na frente.', 'Usado para ver a aparência ou decorar ambientes.'] },
+  { palavra: 'Estrela ⭐', definicoes: ['Corpo celeste que brilha no céu, composto principalmente de gás.', 'As estrelas são fundamentais para a formação de galáxias e sistemas solares.'] },
+  { palavra: 'Estudo 📚', definicoes: ['Ato de aprender e adquirir conhecimento.', 'Importante para o desenvolvimento pessoal e profissional.'] },
+  { palavra: 'Faca 🔪', definicoes: ['Ferramenta com lâmina afiada, utilizada para cortar diversos materiais, especialmente alimentos.', 'Existem diferentes tipos, como facas de cozinha, de mesa e de caça.'] },
+  { palavra: 'Feliz 😊', definicoes: ['Estado emocional de contentamento e alegria, frequentemente associado a experiências positivas.', 'A felicidade é um objetivo comum na vida das pessoas.'] },
+  { palavra: 'Festa 🎉', definicoes: ['Evento social para comemoração, que pode incluir música, dança e comida.', 'As festas são realizadas em diversas ocasiões, como aniversários e feriados.'] },
+  { palavra: 'Flor 🌸', definicoes: ['Parte da planta que contém as estruturas reprodutivas, geralmente colorida e perfumada.', 'As flores atraem polinizadores e são usadas em arranjos e decorações.'] },
+  { palavra: 'Fumaça 💨', definicoes: ['Partículas suspensas no ar produzidas pela queima de materiais.', 'Pode ser nociva à saúde e ao meio ambiente.'] },
+  { palavra: 'Gato 🐱', definicoes: ['Mamífero doméstico, conhecido por sua agilidade e independência, comumente mantido como animal de estimação.', 'Possui um comportamento curioso e é famoso por sua habilidade de caçar roedores.'] },
+  { palavra: 'Girafa 🦒', definicoes: ['Maior animal terrestre, conhecido pelo pescoço longo e manchas características.', 'Habita savanas africanas e se alimenta de folhas altas.'] },
+  { palavra: 'História 📖', definicoes: ['Relato de eventos passados, que pode ser estudado e interpretado.', 'A história é fundamental para entender a evolução da sociedade e da cultura.'] },
+  { palavra: 'Hora ⏰', definicoes: ['Unidade de medida do tempo, equivalente a 60 minutos.', 'Usada para organizar atividades diárias e agendar compromissos.'] },
+  { palavra: 'Hotel 🏨', definicoes: ['Estabelecimento que oferece hospedagem temporária para viajantes.', 'Os hotéis variam em categoria, desde econômicos até luxuosos.'] },
+  { palavra: 'Igreja ⛪', definicoes: ['Lugar de culto religioso, onde os fiéis se reúnem para adorar e praticar sua fé.', 'As igrejas podem ter diferentes denominações e estilos arquitetônicos.'] },
+  { palavra: 'Ilha 🏝️', definicoes: ['Porção de terra cercada por água, que pode ser habitada ou desabitada.', 'Existem ilhas oceânicas, continentais e fluviais, cada uma com características únicas.'] },
+  { palavra: 'Jacaré 🐊', definicoes: ['Réptil aquático com dentes afiados e pele escamosa, encontrado em rios e pântanos.', 'Conhecido pela força da mordida e hábitos predatórios.'] },
+  { palavra: 'Janela 🪟', definicoes: ['Abertura em uma parede que permite a entrada de luz e ar, geralmente coberta por vidro.', 'As janelas podem ser abertas ou fechadas e são importantes para a ventilação.'] },
+  { palavra: 'Kiwi 🥝', definicoes: ['Fruta pequena, de polpa verde e sabor agridoce, originária da China.', 'Fonte rica em vitamina C e fibras.'] },
+  { palavra: 'Leão 🦁', definicoes: ['Felino selvagem, conhecido como o rei da selva, famoso por sua juba e comportamento social em grupos chamados de alcateias.', 'Habita principalmente savanas e é um símbolo de força e coragem.'] },
+  { palavra: 'Leite 🥛', definicoes: ['Líquido nutritivo produzido por mamíferos para alimentar seus filhotes.', 'Usado em diversas receitas e como bebida, rico em cálcio e proteínas.'] },
+  { palavra: 'Limão 🍋', definicoes: ['Fruta cítrica de sabor ácido, amplamente utilizada na culinária e em bebidas.', 'Rico em vitamina C, o limão é conhecido por suas propriedades antioxidantes.'] },
+  { palavra: 'Lobo 🐺', definicoes: ['Mamífero carnívoro de vida social, considerado ancestral dos cães domésticos.', 'Habita florestas e tundras de vários continentes.'] },
+  { palavra: 'Maçã 🍎', definicoes: ['Fruta comestível, geralmente redonda e de casca vermelha, verde ou amarela.', 'Rica em fibras e antioxidantes, é popular em dietas saudáveis.'] },
+  { palavra: 'Manga 🥭', definicoes: ['Fruta tropical com sabor doce e polpa suculenta, muito consumida fresca.', 'Rica em vitaminas A e C.'] },
+  { palavra: 'Mel 🍯', definicoes: ['Substância doce produzida pelas abelhas a partir do néctar das flores.', 'Usado como adoçante natural e em diversas receitas culinárias.'] },
+  { palavra: 'Ninho 🪺', definicoes: ['Estrutura construída por aves para proteger ovos e filhotes.', 'Existem os mais variados tipos adaptados a diferentes espécies.'] },
+  { palavra: 'Navalha 🔪', definicoes: ['Ferramenta afiada usada para cortar cabelo ou pelos, com lâmina dobrável.', 'Usada por barbeiros e em cuidados pessoais.'] },
+  { palavra: 'Navio 🚢', definicoes: ['Grande embarcação projetada para transporte de pessoas ou cargas por água.', 'Existem diferentes tipos, como cargueiros, petroleiros e cruzeiros.'] },
+  { palavra: 'Nuvem ☁️', definicoes: ['Massa visível de minúsculas gotas de água ou cristais de gelo suspensos na atmosfera.', 'As nuvens desempenham um papel crucial no ciclo da água e no clima.'] },
+  { palavra: 'Olho 👁️', definicoes: ['Órgão da visão, responsável por captar luz e permitir a percepção de imagens.', 'Os olhos são essenciais para a interação com o ambiente e a comunicação.'] },
+  { palavra: 'Ovo 🥚', definicoes: ['Reprodução das aves, rico em proteínas e amplamente utilizado na culinária.', 'Existem diferentes tipos, como ovos de galinha, codorna e pato.'] },
+  { palavra: 'Panda 🐼', definicoes: ['Mamífero originário da China, conhecido pela pelagem preto e branco.', 'Alimenta-se principalmente de bambu.'] },
+  { palavra: 'Pão 🍞', definicoes: ['Alimento básico feito de farinha, água e fermento, assado em forno.', 'Existem diversas variedades, como pão francês, integral e de forma.'] },
+  { palavra: 'Peixe 🐟', definicoes: ['Animal aquático que respira por brânquias, encontrado em rios, lagos e oceanos.', 'Usado como alimento em diversas culturas, rico em ômega-3.'] },
+  { palavra: 'Praia 🏖️', definicoes: ['Faixa de areia ou cascalho ao longo de um corpo de água, como um mar ou lago.', 'As praias são populares para lazer, banhos de sol e esportes aquáticos.'] },
+  { palavra: 'Quebra-cabeça 🧩', definicoes: ['Jogo ou passatempo que consiste em montar uma imagem a partir de peças embaralhadas.', 'Estimula o raciocínio lógico e a coordenação motora.'] },
+  { palavra: 'Queijo 🧀', definicoes: ['Produto alimentício feito a partir do leite coagulado, com diversas variedades e sabores.', 'Usado em pratos, sanduíches e como aperitivo.'] },
+  { palavra: 'Quati 🦝', definicoes: ['Mamífero da família dos guaxinins, encontrado em florestas tropicais.', 'É diurno e tem dieta onívora.'] },
+  { palavra: 'Rádio 📻', definicoes: ['Dispositivo para transmissão e recepção de sons e informações via ondas eletromagnéticas.', 'Usado para comunicação e entretenimento, com programação variada.'] },
+  { palavra: 'Raposa 🦊', definicoes: ['Pequeno mamífero canídeo, ágil e astuto, encontrado em diversos habitats.', 'Possui pelagem densa frequentemente avermelhada.'] },
+  { palavra: 'Rio 🌊', definicoes: ['Curso de água doce que flui em direção a um mar ou lago, essencial para o ecossistema.', 'Os rios são importantes para a irrigação, transporte e abastecimento de água.'] },
+  { palavra: 'Rosa 🌹', definicoes: ['Flor conhecida por sua beleza e perfume, frequentemente associada ao amor.', 'Existem diversas variedades e cores, cada uma com significados simbólicos.'] },
+  { palavra: 'Sapo 🐸', definicoes: ['Anfíbio que vive em ambientes aquáticos e terrestres, conhecido pelo coaxar.', 'Os sapos têm uma dieta à base de insetos e desempenham um papel importante no ecossistema.'] },
+  { palavra: 'Sereia 🧜‍♀️', definicoes: ['Figura lendária, metade mulher e metade peixe, presente em várias culturas.', 'Simboliza mistério e fascínio pelo mar.'] },
+  { palavra: 'Sol ☀️', definicoes: ['Estrela que é a principal fonte de luz e calor para a Terra.', 'Essencial para a vida, é o centro do sistema solar.'] },
+  { palavra: 'Tartaruga 🐢', definicoes: ['Réptil de casco duro, conhecido pela longevidade e lentidão dos movimentos.', 'Habita ambientes terrestres e aquáticos.'] },
+  { palavra: 'Tigre 🐅', definicoes: ['Grande felino listrado, nativo da Ásia, conhecido por sua força e agilidade.', 'Os tigres são solitários e habitam florestas densas e manguezais.'] },
+  { palavra: 'Ursinho 🐻', definicoes: ['Termo carinhoso para pequenos ursos, populares em brinquedos e histórias infantis.', 'Simboliza conforto e proteção.'] },
+  { palavra: 'Uva 🍇', definicoes: ['Fruta pequena e redonda, com sabor doce ou ácido, usada na produção de vinhos e sucos.', 'Rica em antioxidantes e vitaminas, é consumida fresca ou seca como uva-passa.'] },
+  { palavra: 'Vela 🕯️', definicoes: ['Objeto que produz luz por meio da queima de uma cera e um pavio.', 'Usada como fonte de iluminação e em cerimônias.'] },
+  { palavra: 'Vulcão 🌋', definicoes: ['Abertura na crosta terrestre por onde são expelidos lava, gases e cinzas.', 'Os vulcões podem ser ativos, inativos ou extintos e influenciam o clima e a geografia.'] },
+  { palavra: 'Xadrez ♟️', definicoes: ['Jogo de estratégia jogado em um tabuleiro quadriculado, com peças diferentes.', 'Estimula o raciocínio lógico e a concentração.'] },
+  { palavra: 'Xícara ☕', definicoes: ['Recipiente usado para servir bebidas quentes, como café ou chá.', 'Pode ser feita de diversos materiais, como cerâmica, vidro ou porcelana.'] },
+  { palavra: 'Yoga 🧘‍♂️', definicoes: ['Prática que combina exercícios físicos, respiração e meditação para promover equilíbrio e bem-estar.', 'Originada na Índia, o yoga é usado para aliviar o estresse e melhorar a flexibilidade.'] },
+  { palavra: 'Zangão 🐝', definicoes: ['Abelha macho dedicada à reprodução nas colônias.', 'Não participa da coleta de néctar ou do cuidado com a colmeia.'] },
+  { palavra: 'Zebra 🦓', definicoes: ['Animal africano conhecido por sua pelagem listrada em preto e branco.', 'As listras ajudam na camuflagem e na identificação entre os membros do grupo.'] }
 ];
