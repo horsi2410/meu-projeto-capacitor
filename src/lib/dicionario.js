@@ -1,139 +1,139 @@
 export const dicionario = [
   { 
-    palavra: '🍐 Abacate', 
+    palavra: 'Abacate🍐', 
     definicoes: [
       'Fruto com polpa cremosa e rica em gorduras saudáveis, originário da América Central.',
       'Usado em saladas, guacamole e como acompanhamento em diversos pratos.'
     ] 
   },
   { 
-    palavra: '🍍 Abacaxi', 
+    palavra: ' Abacaxi🍍', 
     definicoes: [
       'Fruta tropical com casca espinhosa e polpa doce e suculenta.',
       'Usada em sucos, sobremesas e pratos salgados.'
     ] 
   },
   { 
-    palavra: '❤️ Amor', 
+    palavra: ' Amor❤️', 
     definicoes: [
       'Sentimento profundo de afeto e carinho por outra pessoa, que pode se manifestar de várias formas.',
       'O amor é um tema central em muitas obras de arte, literatura e música.'
     ] 
   },
   { 
-    palavra: '🤝 Amigo', 
+    palavra: ' Amigo🤝', 
     definicoes: [
       'Pessoa com quem se tem uma relação de afeto, confiança e companheirismo.',
       'Os amigos são importantes para o suporte emocional e social.'
     ] 
   },
   { 
-    palavra: '🍌 Banana', 
+    palavra: ' Banana🍌', 
     definicoes: [
       'Fruta tropical, alongada e de casca amarela quando madura, rica em potássio.',
       'Comumente consumida in natura ou utilizada em sobremesas e vitaminas.'
     ] 
   },
   { 
-    palavra: '⚽ Bola', 
+    palavra: ' Bola⚽', 
     definicoes: [
       'Objeto esférico usado em diversos esportes e brincadeiras, como futebol e basquete.',
       'As bolas podem ser feitas de diferentes materiais, como borracha ou couro.'
     ] 
   },
   { 
-    palavra: '⚪ Branco', 
+    palavra: 'Branco⚪', 
     definicoes: [
       'Cor clara, frequentemente associada à pureza, paz e simplicidade.',
       'Usado em diversas culturas como símbolo de novos começos.'
     ] 
   },
   { 
-    palavra: '🐶 Cachorro', 
+    palavra: 'Cachorro🐶', 
     definicoes: [
       'Mamífero doméstico, conhecido como o melhor amigo do homem, com diversas raças.',
       'Usado como animal de estimação, para companhia e em atividades de trabalho.'
     ] 
   },
   { 
-    palavra: '☕ Café', 
+    palavra: 'Café☕', 
     definicoes: [
       'Bebida feita a partir dos grãos torrados da planta cafeeira, apreciada em todo o mundo.',
       'O café é conhecido por suas propriedades estimulantes devido à cafeína.'
     ] 
   },
   { 
-    palavra: '🏠 Casa', 
+    palavra: 'Casa🏠 ', 
     definicoes: [
       'Edificação onde as pessoas moram, que pode variar em tamanho e estilo.',
       'As casas podem ser unifamiliares, multifamiliares ou apartamentos.'
     ] 
   },
   { 
-    palavra: '🚗 Carro', 
+    palavra: ' Carro🚗', 
     definicoes: [
       'Veículo com rodas utilizado para transporte pessoal, movido por motor.',
       'Existem diferentes tipos, como sedãs, SUVs e caminhonetes.'
     ] 
   },
   { 
-    palavra: '💃 Dança', 
+    palavra: 'Dança💃', 
     definicoes: [
       'Movimento do corpo em ritmo musical, que pode ser uma forma de expressão artística.',
       'Existem diversos estilos de dança, como ballet, salsa e hip-hop.'
     ] 
   },
   { 
-    palavra: '🍭 Doce', 
+    palavra: ' Doce🍭', 
     definicoes: [
       'Alimento saboroso, geralmente rico em açúcar, que pode ser consumido como sobremesa.',
       'Existem diversos tipos, como balas, chocolates e bolos.'
     ] 
   },
   { 
-    palavra: '🤒 Doente', 
+    palavra: ' Doente🤒', 
     definicoes: [
       'Pessoa que está com alguma enfermidade ou condição de saúde debilitante.',
       'Os doentes podem necessitar de cuidados médicos e apoio emocional.'
     ] 
   },
   { 
-    palavra: '🐘 Elefante', 
+    palavra: '                                                                                                                                                                                                                                                                                                                                                                                                                                          Elefante🐘', 
     definicoes: [
       'Maior mamífero terrestre, conhecido por sua tromba longa e presas de marfim.',
       'Habita principalmente savanas e florestas, e é um símbolo de sabedoria.'
     ] 
   },
   { 
-    palavra: '⭐ Estrela', 
+    palavra: 'Estrela⭐', 
     definicoes: [
       'Corpo celeste que brilha no céu, composto principalmente de gás.',
       'As estrelas são fundamentais para a formação de galáxias e sistemas solares.'
     ] 
   },
   { 
-    palavra: '😊 Feliz', 
+    palavra: 'Feliz😊', 
     definicoes: [
       'Estado emocional de contentamento e alegria, frequentemente associado a experiências positivas.',
       'A felicidade é um objetivo comum na vida das pessoas.'
     ] 
   },
   { 
-    palavra: '🔪 Faca', 
+    palavra: 'Faca🔪', 
     definicoes: [
       'Ferramenta com lâmina afiada, utilizada para cortar diversos materiais, especialmente alimentos.',
       'Existem diferentes tipos, como facas de cozinha, de mesa e de caça.'
     ] 
   },
   { 
-    palavra: '🌸 Flor', 
+    palavra: 'Flor🌸', 
     definicoes: [
       'Parte da planta que contém as estruturas reprodutivas, geralmente colorida e perfumada.',
       'As flores atraem polinizadores e são usadas em arranjos e decorações.'
     ] 
   },
   { 
-    palavra: '🎉 Festa', 
+    palavra: ' Festa🎉', 
     definicoes: [
       'Evento social para comemoração, que pode incluir música, dança e comida.',
       'As festas são realizadas em diversas ocasiões, como aniversários e feriados.'

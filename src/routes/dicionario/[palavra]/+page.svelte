@@ -47,18 +47,18 @@
       padding: 1rem;
       border: 1px solid #cbd5e0; /* Cinza claro */
       border-radius: 8px;
-      background: #f7fafc; /* Fundo claro */
+      background: #f7fafc; 
     }
   </style>
   
   {#if termo}
     <div>
       <h1>{termo.palavra}</h1>
-      <ul>
+      <ol>
         {#each termo.definicoes as definicao}
           <li>{definicao}</li>
         {/each}
-      </ul>
+      </ol>
       <a href="/dicionario">Voltar</a>
     </div>
   {:else}
