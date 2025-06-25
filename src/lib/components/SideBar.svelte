@@ -10,6 +10,7 @@
         <li class="nav-item"><a class="nav-link active" href="/calculadora">Calculadora</a></li>
         <li class="nav-item"><a class="nav-link active" href="/dicionario">Dicionário</a></li>
         <li class="nav-item"><a class="nav-link active" href="/unidades">Conversor de unidades</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/sorteio">Sorteio</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown">Dropdown</a>
           <ul class="dropdown-menu">
