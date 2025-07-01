@@ -1,151 +1,352 @@
 <script>
-  import { onMount } from 'svelte';
-  import Modal from '$lib/components/Modal.svelte';
-  import Toast from '$lib/components/Toast.svelte';
-  import ToDoList from '$lib/components/ToDoList.svelte';
-  import * as bootstrap from 'bootstrap';
+  import { onMount } from "svelte";
 
-  // Estado para nova tarefa no input
-  let novaTarefa = '';
-  // Lista das tarefas, cada uma é um objeto { conteudo: string, status: 0 ou 1 }
+  let novaTarefa = "";
+  let busca = "";
+  let exibir = "0";
   let tarefas = [];
-  // Tarefa que está sendo editada atualmente
-  let tarefaEditando;
-  // Conteúdo temporário para edição
-  let conteudoTarefaEditando = '';
-  // Tarefa que está marcada para exclusão
-  let tarefaExcluindo;
-  // Instância do Toast do Bootstrap para mensagens
-  let mensagemToast;
-  // Filtro atual para exibição: 'todas', 'pendentes', 'concluidas'
-  let filtro = 'todas';
 
-  // Adiciona nova tarefa após submeter o formulário
   function adicionarTarefa(event) {
     event.preventDefault();
-    novaTarefa = novaTarefa.trim();
-    if (!novaTarefa) {
-      // Mostra mensagem caso o campo esteja vazio
-      mensagemToast.show();
-      return;
+    if (novaTarefa.trim()) {
+      tarefas = [...tarefas, { id: Date.now(), nome: novaTarefa, status: 0 }];
+      novaTarefa = "";
     }
-    // Adiciona a nova tarefa à lista com status pendente (0)
-    tarefas = [...tarefas, { conteudo: novaTarefa, status: 0 }];
-    novaTarefa = '';
   }
 
-  // Marca todas as tarefas como pendentes (0) ou concluídas (1)
-  function marcarTodasComo(status) {
-    tarefas = tarefas.map(t => ({ ...t, status }));
+  function alltasksdone() {
+    tarefas = tarefas.map((t) => ({ ...t, status: 1 }));
   }
 
-  // Define o filtro para mostrar tarefas
-  function definirFiltro(opcao) {
-    filtro = opcao;
+  function alltasksundone() {
+    tarefas = tarefas.map((t) => ({ ...t, status: 0 }));
   }
 
-  // Inicia edição da tarefa selecionada
-  function editarTarefa(tarefa) {
-    tarefaEditando = tarefa;
-    conteudoTarefaEditando = tarefa.conteudo;
+  function alterarStatus(id) {
+    tarefas = tarefas.map((t) =>
+      t.id === id ? { ...t, status: t.status === 0 ? 1 : 0 } : t
+    );
   }
 
-  // Confirma a edição, salvando o conteúdo editado
-  function confirmarEdicao() {
-    conteudoTarefaEditando = conteudoTarefaEditando.trim();
-    if (!conteudoTarefaEditando) {
-      mensagemToast.show();
-      return;
-    }
-    tarefaEditando.conteudo = conteudoTarefaEditando;
-    cancelarEdicao();
+  function filtrarTarefas() {
+    return tarefas
+      .filter((t) => {
+        if (exibir === "0") return t.status === 0;
+        if (exibir === "1") return t.status === 1;
+        return true;
+      })
+      .filter((t) => t.nome.toLowerCase().includes(busca.toLowerCase()));
   }
 
-  // Cancela a edição da tarefa
-  function cancelarEdicao() {
-    tarefaEditando = undefined;
-    conteudoTarefaEditando = '';
-  }
-
-  // Altera status (pendente/concluída) da tarefa
-  function alterarStatus(tarefa, status) {
-    tarefa.status = status;
-    tarefas = [...tarefas]; // Atualiza lista para reatividade
-  }
-
-  // Marca tarefa para exclusão, abre modal de confirmação
-  function excluirTarefa(tarefa) {
-    tarefaExcluindo = tarefa;
-  }
-
-  // Confirma exclusão da tarefa selecionada
-  function confirmarExclusao() {
-    tarefas = tarefas.filter(t => t !== tarefaExcluindo);
-    tarefaExcluindo = undefined;
-  }
-
-  // Inicializa o Toast após o componente montar
-  onMount(() => {
-    mensagemToast = new bootstrap.Toast(document.querySelector('#mensagemToast'));
-  });
+  $: tarefasPendentes = tarefas.filter((t) => t.status === 0);
+  $: tarefasConcluidas = tarefas.filter((t) => t.status === 1);
 </script>
 
-<!-- Área fixa no topo para adicionar nova tarefa e mostrar mensagens Toast -->
-<div class="fixed-top pt-5" style="z-index: 1020;">
-  <form class="container-fluid input-group px-4 pt-3" on:submit={adicionarTarefa}>
+<!-- Topo fixo -->
+<header class="topo-fixo">
+  <button class="icon-btn left" aria-label="Menu">
+    &#9776;
+  </button>
+  <h1 class="titulo">Disp.Móv.</h1>
+  <button class="icon-btn right" aria-label="Mais opções">
+    &#8942;
+  </button>
+</header>
+
+<!-- Fundo rosa -->
+<main class="fundo-rosa">
+  <section class="card">
+    <!-- Formulário adicionar tarefa -->
+    <form class="form-adicionar" on:submit={adicionarTarefa}>
+      <input
+        type="text"
+        placeholder="Nova tarefa"
+        bind:value={novaTarefa}
+        aria-label="Nova tarefa"
+      />
+      <button type="submit" aria-label="Adicionar tarefa">+</button>
+    </form>
+
+    <!-- Busca e filtros -->
     <input
-      class="form-control form-control-lg"
-      placeholder="Nova tarefa"
-      bind:value={novaTarefa}
+      type="text"
+      placeholder="Busca"
+      bind:value={busca}
+      aria-label="Buscar tarefas"
+      class="input-busca"
     />
-    <button type="submit" class="btn btn-primary input-group-text" aria-label="adicionar">
-      <i class="bi bi-plus-lg"></i>
-    </button>
-  </form>
-  <!-- Componente Toast para mostrar mensagens -->
-  <Toast id="mensagemToast" msg="Digite algo!" />
-</div>
+    <select bind:value={exibir} aria-label="Filtrar tarefas" class="select-filtro">
+      <option value="0">Pendentes</option>
+      <option value="1">Concluídas</option>
+      <option value="2">Todas</option>
+    </select>
 
-<!-- Conteúdo principal com opções e lista de tarefas -->
-<div class="container-fluid mt-5 pt-3">
-  <!-- Dropdown para opções de marcação e filtro -->
-  <div class="dropdown mb-3">
-    <button
-      class="btn btn-secondary dropdown-toggle"
-      type="button"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
-      Opções
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" on:click={() => marcarTodasComo(1)}>Marcar todas como concluídas</a></li>
-      <li><a class="dropdown-item" on:click={() => marcarTodasComo(0)}>Marcar todas como pendentes</a></li>
-      <li><a class="dropdown-item" on:click={() => definirFiltro('pendentes')}>Exibir pendentes no topo</a></li>
-      <li><a class="dropdown-item" on:click={() => definirFiltro('concluidas')}>Exibir concluídas no topo</a></li>
-      <li><a class="dropdown-item" on:click={() => definirFiltro('todas')}>Exibir todas no topo</a></li>
+    <div class="botoes-acoes">
+      <button type="button" on:click={alltasksdone} class="btn-verde">
+        Todas Concluídas
+      </button>
+      <button type="button" on:click={alltasksundone} class="btn-amarelo">
+        Todas Pendentes
+      </button>
+    </div>
+
+    <div class="contadores">
+      <span>Total: {tarefas.length}</span>
+      <span>Pendentes: {tarefasPendentes.length}</span>
+      <span>Concluídas: {tarefasConcluidas.length}</span>
+    </div>
+
+    <!-- Lista de tarefas -->
+    <ul class="lista-tarefas">
+      {#each filtrarTarefas() as tarefa (tarefa.id)}
+        <li
+          class:concluida={tarefa.status === 1}
+          on:click={() => alterarStatus(tarefa.id)}
+          tabindex="0"
+          role="button"
+          aria-pressed={tarefa.status === 1}
+        >
+          {tarefa.nome}
+        </li>
+      {/each}
     </ul>
-  </div>
+  </section>
+</main>
 
-  <!-- Componente que lista as tarefas filtradas e gerencia ações -->
-  <ToDoList
-    tarefas={
-      filtro === 'todas'
-        ? tarefas
-        : [
-            ...tarefas.filter(t => t.status === (filtro === 'pendentes' ? 0 : 1)),
-            ...tarefas.filter(t => t.status !== (filtro === 'pendentes' ? 0 : 1))
-          ]
+<style>
+  /* RESET simples */
+  * {
+    box-sizing: border-box;
+  }
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, sans-serif;
+    background: #f0f4ff;
+  }
+
+  /* TOPO FIXO */
+  .topo-fixo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #3b82f6; /* azul forte */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    color: white;
+    z-index: 1000;
+  }
+
+  .icon-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+  }
+  .icon-btn:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  .titulo {
+    font-weight: 600;
+    font-size: 18px;
+    user-select: none;
+  }
+
+  /* FUNDO ROSA */
+  .fundo-rosa {
+    padding: 70px 12px 20px; /* espaço para topo fixo */
+    min-height: 100vh;
+    background: linear-gradient(180deg, #f9d5e5 0%, #e0c6f5 100%);
+    display: flex;
+    justify-content: center;
+  }
+
+  /* CARD */
+  .card {
+    background: white;
+    border-radius: 16px;
+    max-width: 370px;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* FORMULARIO ADICIONAR */
+  .form-adicionar {
+    display: flex;
+    gap: 8px;
+  }
+  .form-adicionar input {
+    flex-grow: 1;
+    padding: 10px 14px;
+    font-size: 1.1rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .form-adicionar input:focus {
+    border-color: #3b82f6;
+  }
+  .form-adicionar button {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    width: 45px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .form-adicionar button:hover {
+    background-color: #2563eb;
+  }
+
+  /* BUSCA E FILTRO */
+  .input-busca {
+    padding: 10px 14px;
+    font-size: 1.05rem;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .input-busca:focus {
+    border-color: #3b82f6;
+  }
+
+  .select-filtro {
+    margin-top: 6px;
+    padding: 10px 14px;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.3s;
+  }
+  .select-filtro:focus {
+    border-color: #3b82f6;
+  }
+
+  /* BOTOES AÇÕES */
+  .botoes-acoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .botoes-acoes button {
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s;
+  }
+  .btn-verde {
+    background-color: #22c55e;
+  }
+  .btn-verde:hover {
+    background-color: #16a34a;
+  }
+  .btn-amarelo {
+    background-color: #eab308;
+  }
+  .btn-amarelo:hover {
+    background-color: #ca8a04;
+  }
+
+  /* CONTADORES */
+  .contadores {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  /* LISTA DE TAREFAS */
+  .lista-tarefas {
+    margin-top: 14px;
+    list-style: none;
+    padding: 0;
+    max-height: 220px;
+    overflow-y: auto;
+    border-top: 1px solid #ddd;
+  }
+  .lista-tarefas li {
+    padding: 10px 14px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+  }
+  .lista-tarefas li:hover,
+  .lista-tarefas li:focus {
+    background-color: #f0f9ff;
+    outline: none;
+  }
+  .lista-tarefas li.concluida {
+    color: #999;
+    text-decoration: line-through;
+  }
+
+  /* SCROLL customizado */
+  .lista-tarefas::-webkit-scrollbar {
+    width: 6px;
+  }
+  .lista-tarefas::-webkit-scrollbar-thumb {
+    background-color: rgba(59, 130, 246, 0.5);
+    border-radius: 3px;
+  }
+
+  /* RESPONSIVO: */
+  @media (max-width: 380px) {
+    .card {
+      max-width: 370px;
+      padding: 16px;
     }
-    {tarefaEditando}
-    bind:conteudoTarefaEditando
-    {editarTarefa}
-    {confirmarEdicao}
-    {cancelarEdicao}
-    {alterarStatus}
-    {excluirTarefa}
-  />
-</div>
-
-<!-- Modal para confirmar exclusão da tarefa -->
-<Modal msg="Deseja excluir a tarefa?" acao={confirmarExclusao} />
+    .form-adicionar input {
+      font-size: 1rem;
+      padding: 8px 12px;
+    }
+    .form-adicionar button {
+      font-size: 1.3rem;
+      width: 40px;
+    }
+    .input-busca {
+      font-size: 1rem;
+      padding: 8px 12px;
+    }
+    .select-filtro {
+      font-size: 0.95rem;
+      padding: 8px 12px;
+    }
+    .botoes-acoes button {
+      font-size: 0.95rem;
+      padding: 10px;
+    }
+    .contadores {
+      font-size: 0.85rem;
+    }
+    .lista-tarefas li {
+      font-size: 0.95rem;
+      padding: 8px 12px;
+    }
+  }
+</style>
