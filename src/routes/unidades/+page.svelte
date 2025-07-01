@@ -1,181 +1,196 @@
 <script>
-  const conversionTypes = {
+  // Objeto com as categorias de conversão e suas opções correspondentes
+  const tiposDeConversao = {
     "Temperatura": [
-      { name: "Graus Celsius → Fahrenheit", from: "°C", to: "°F", convert: (val) => (val * 9/5) + 32, reverse: (val) => (val - 32) * 5/9 },
-      { name: "Fahrenheit → Graus Celsius", from: "°F", to: "°C", convert: (val) => (val - 32) * 5/9, reverse: (val) => (val * 9/5) + 32 }
+      { nome: "Graus Celsius → Fahrenheit", de: "°C", para: "°F", converter: (val) => (val * 9/5) + 32, inverter: (val) => (val - 32) * 5/9 },
+      { nome: "Fahrenheit → Graus Celsius", de: "°F", para: "°C", converter: (val) => (val - 32) * 5/9, inverter: (val) => (val * 9/5) + 32 }
     ],
     "Peso": [
-      { name: "Quilos → Gramas", from: "kg", to: "g", convert: (val) => val * 1000, reverse: (val) => val / 1000 },
-      { name: "Gramas → Quilos", from: "g", to: "kg", convert: (val) => val / 1000, reverse: (val) => val * 1000 },
-      { name: "Quilos → Libras", from: "kg", to: "lb", convert: (val) => val * 2.20462, reverse: (val) => val / 2.20462 },
-      { name: "Libras → Quilos", from: "lb", to: "kg", convert: (val) => val / 2.20462, reverse: (val) => val * 2.20462 },
+      { nome: "Quilos → Gramas", de: "kg", para: "g", converter: (val) => val * 1000, inverter: (val) => val / 1000 },
+      { nome: "Gramas → Quilos", de: "g", para: "kg", converter: (val) => val / 1000, inverter: (val) => val * 1000 },
+      { nome: "Quilos → Libras", de: "kg", para: "lb", converter: (val) => val * 2.20462, inverter: (val) => val / 2.20462 },
+      { nome: "Libras → Quilos", de: "lb", para: "kg", converter: (val) => val / 2.20462, inverter: (val) => val * 2.20462 },
     ],
     "Comprimento": [
-      { name: "Metros → Centímetros", from: "m", to: "cm", convert: (val) => val * 100, reverse: (val) => val / 100 },
-      { name: "Centímetros → Metros", from: "cm", to: "m", convert: (val) => val / 100, reverse: (val) => val * 100 },
-      { name: "Metros → Jardas", from: "m", to: "yd", convert: (val) => val * 1.09361, reverse: (val) => val / 1.09361 },
-      { name: "Quilômetros → Milhas", from: "km", to: "mi", convert: (val) => val * 0.621371, reverse: (val) => val / 0.621371 },
-     { name: "Milhas → Quilômetros", from: "mi", to: "km", convert: (val) => val / 0.621371, reverse: (val) => val * 0.621371 }
+      { nome: "Metros → Centímetros", de: "m", para: "cm", converter: (val) => val * 100, inverter: (val) => val / 100 },
+      { nome: "Centímetros → Metros", de: "cm", para: "m", converter: (val) => val / 100, inverter: (val) => val * 100 },
+      { nome: "Metros → Jardas", de: "m", para: "yd", converter: (val) => val * 1.09361, inverter: (val) => val / 1.09361 },
+      { nome: "Quilômetros → Milhas", de: "km", para: "mi", converter: (val) => val * 0.621371, inverter: (val) => val / 0.621371 },
+      { nome: "Milhas → Quilômetros", de: "mi", para: "km", converter: (val) => val / 0.621371, inverter: (val) => val * 0.621371 }
     ],
     "Área": [
-      { name: "Metros quadrados → Centímetros quadrados", from: "m²", to: "cm²", convert: (val) => val * 10000, reverse: (val) => val / 10000 },
-      { name: "Centímetros quadrados → Metros quadrados", from: "cm²", to: "m²", convert: (val) => val / 10000, reverse: (val) => val * 10000 },
-      { name: "Quilômetros quadrados → Metros quadrados", from: "km²", to: "m²", convert: (val) => val * 1000000, reverse: (val) => val / 1000000 },
+      { nome: "Metros quadrados → Centímetros quadrados", de: "m²", para: "cm²", converter: (val) => val * 10000, inverter: (val) => val / 10000 },
+      { nome: "Centímetros quadrados → Metros quadrados", de: "cm²", para: "m²", converter: (val) => val / 10000, inverter: (val) => val * 10000 },
+      { nome: "Quilômetros quadrados → Metros quadrados", de: "km²", para: "m²", converter: (val) => val * 1000000, inverter: (val) => val / 1000000 },
     ],
     "Volume": [
-      { name: "Litros → Mililitros", from: "L", to: "mL", convert: (val) => val * 1000, reverse: (val) => val / 1000 },
-      { name: "Mililitros → Litros", from: "mL", to: "L", convert: (val) => val / 1000, reverse: (val) => val * 1000 },
+      { nome: "Litros → Mililitros", de: "L", para: "mL", converter: (val) => val * 1000, inverter: (val) => val / 1000 },
+      { nome: "Mililitros → Litros", de: "mL", para: "L", converter: (val) => val / 1000, inverter: (val) => val * 1000 },
     ],
     "Velocidade": [
-      { name: "Quilômetros por hora → Metros por segundo", from: "km/h", to: "m/s", convert: (val) => val / 3.6, reverse: (val) => val * 3.6 },
-      { name: "Metros por segundo → Quilômetros por hora", from: "m/s", to: "km/h", convert: (val) => val * 3.6, reverse: (val) => val / 3.6 },
-      { name: "Quilômetros por hora → Milhas por hora", from: "km/h", to: "mph", convert: (val) => val / 1.60934, reverse: (val) => val * 1.60934 }
+      { nome: "Quilômetros por hora → Metros por segundo", de: "km/h", para: "m/s", converter: (val) => val / 3.6, inverter: (val) => val * 3.6 },
+      { nome: "Metros por segundo → Quilômetros por hora", de: "m/s", para: "km/h", converter: (val) => val * 3.6, inverter: (val) => val / 3.6 },
+      { nome: "Quilômetros por hora → Milhas por hora", de: "km/h", para: "mph", converter: (val) => val / 1.60934, inverter: (val) => val * 1.60934 }
     ],
     "Tempo": [
-      { name: "Segundos → Minutos", from: "s", to: "min", convert: (val) => val / 60, reverse: (val) => val * 60 },
-      { name: "Minutos → Segundos", from: "min", to: "s", convert: (val) => val * 60, reverse: (val) => val / 60 },
-      { name: "Horas → Minutos", from: "h", to: "min", convert: (val) => val * 60, reverse: (val) => val / 60 },
-      { name: "Minutos → Horas", from: "min", to: "h", convert: (val) => val / 60, reverse: (val) => val * 60 },
-      { name: "Dias → Horas", from: "d", to: "h", convert: (val) => val * 24, reverse: (val) => val / 24 }
+      { nome: "Segundos → Minutos", de: "s", para: "min", converter: (val) => val / 60, inverter: (val) => val * 60 },
+      { nome: "Minutos → Segundos", de: "min", para: "s", converter: (val) => val * 60, inverter: (val) => val / 60 },
+      { nome: "Horas → Minutos", de: "h", para: "min", converter: (val) => val * 60, inverter: (val) => val / 60 },
+      { nome: "Minutos → Horas", de: "min", para: "h", converter: (val) => val / 60, inverter: (val) => val * 60 },
+      { nome: "Dias → Horas", de: "d", para: "h", converter: (val) => val * 24, inverter: (val) => val / 24 }
     ]
   };
 
-  let selectedCategory = "Temperatura";
-  let selectedConversion = conversionTypes["Temperatura"][0];
-  let inputValue = "";
-  let resultValue = "";
-  let currentTime = getCurrentTime();
-  let isReversed = false;
+  // Categoria selecionada, padrão "Temperatura"
+  let categoriaSelecionada = "Temperatura";
+  // Conversão selecionada, padrão a primeira da categoria
+  let conversaoSelecionada = tiposDeConversao["Temperatura"][0];
+  // Valor digitado para converter
+  let valorEntrada = "";
+  // Resultado da conversão
+  let valorResultado = "";
+  // Hora atual formatada
+  let horaAtual = obterHoraAtual();
+  // Flag para indicar se está invertido
+  let estaInvertido = false;
 
-  function getCurrentTime() {
-    const now = new Date();
-    let hours = now.getHours();
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const ampm = hours >= 12 ? 'PM' : 'AM';
+  // Função para obter hora atual no formato 12h com AM/PM
+  function obterHoraAtual() {
+    const agora = new Date();
+    let horas = agora.getHours();
+    const minutos = agora.getMinutes().toString().padStart(2, '0');
+    const ampm = horas >= 12 ? 'PM' : 'AM';
     
-    hours = hours % 12;
-    hours = hours ? hours : 12;
+    horas = horas % 12;
+    horas = horas ? horas : 12;
     
-    return `${hours}:${minutes} ${ampm}`;
+    return `${horas}:${minutos} ${ampm}`;
   }
 
-  function selectCategory(category) {
-    selectedCategory = category;
-    selectedConversion = conversionTypes[category][0];
-    inputValue = "";
-    resultValue = "";
-    isReversed = false;
+  // Troca categoria e reseta conversão e valores
+  function selecionarCategoria(categoria) {
+    categoriaSelecionada = categoria;
+    conversaoSelecionada = tiposDeConversao[categoria][0];
+    valorEntrada = "";
+    valorResultado = "";
+    estaInvertido = false;
   }
 
-  function selectConversion(conversion) {
-    selectedConversion = conversion;
-    inputValue = "";
-    resultValue = "";
-    isReversed = false;
+  // Troca conversão e reseta valores
+  function selecionarConversao(conversao) {
+    conversaoSelecionada = conversao;
+    valorEntrada = "";
+    valorResultado = "";
+    estaInvertido = false;
   }
 
-  function calculate() {
-    if (!selectedConversion || inputValue === "" || isNaN(inputValue)) {
-      resultValue = "";
+  // Calcula conversão baseado no valor, conversão e direção
+  function calcular() {
+    if (!conversaoSelecionada || valorEntrada === "" || isNaN(valorEntrada)) {
+      valorResultado = "";
       return;
     }
     
-    const value = parseFloat(inputValue);
-    let converted;
+    const valor = parseFloat(valorEntrada);
+    let convertido;
     
-    if (isReversed) {
-      converted = selectedConversion.reverse(value);
+    if (estaInvertido) {
+      convertido = conversaoSelecionada.inverter(valor);
     } else {
-      converted = selectedConversion.convert(value);
+      convertido = conversaoSelecionada.converter(valor);
     }
     
-    if (Number.isInteger(converted)) {
-      resultValue = converted.toString();
+    if (Number.isInteger(convertido)) {
+      valorResultado = convertido.toString();
     } else {
-      resultValue = converted.toFixed(2).replace(/\.?0+$/, '');
+      valorResultado = convertido.toFixed(2).replace(/\.?0+$/, '');
     }
   }
 
-  function toggleConversion() {
-    if (!selectedConversion || inputValue === "" || isNaN(inputValue)) return;
+  // Inverte sentido da conversão e troca valores de entrada e resultado
+  function inverterConversao() {
+    if (!conversaoSelecionada || valorEntrada === "" || isNaN(valorEntrada)) return;
     
-    isReversed = !isReversed;
+    estaInvertido = !estaInvertido;
   
-    const temp = inputValue;
-    inputValue = resultValue;
-    resultValue = temp;
+    const temp = valorEntrada;
+    valorEntrada = valorResultado;
+    valorResultado = temp;
     
-    if (isReversed) {
-      selectedConversion = {
-        ...selectedConversion,
-        name: `${selectedConversion.to} → ${selectedConversion.from}`,
-        from: selectedConversion.to,
-        to: selectedConversion.from
+    if (estaInvertido) {
+      conversaoSelecionada = {
+        ...conversaoSelecionada,
+        nome: `${conversaoSelecionada.para} → ${conversaoSelecionada.de}`,
+        de: conversaoSelecionada.para,
+        para: conversaoSelecionada.de
       };
     } else {
-      const original = conversionTypes[selectedCategory].find(c => 
-        c.from === selectedConversion.to && c.to === selectedConversion.from
+      const original = tiposDeConversao[categoriaSelecionada].find(c =>
+        c.de === conversaoSelecionada.para && c.para === conversaoSelecionada.de
       );
-      if (original) selectedConversion = original;
+      if (original) conversaoSelecionada = original;
     }
   }
 
+  // Atualiza hora a cada minuto
   setInterval(() => {
-    currentTime = getCurrentTime();
+    horaAtual = obterHoraAtual();
   }, 60000);
 </script>
 
-<div class="converter-app">
+<!-- Interface do conversor -->
+<div class="app-conversor">
   <header>
-    <div class="time-display">{currentTime}</div>
+    <div class="exibe-hora">{horaAtual}</div>
     <h1>Conversor</h1>
-    <p class="subtitle">Selecione o que deseja converter</p>
+    <p class="subtitulo">Escolha o que deseja converter</p>
   </header>
   
   <main>
-    <div class="mobile-converter">
-      <div class="category-selector">
-        <select bind:value={selectedCategory} on:change={() => selectCategory(selectedCategory)}>
-          {#each Object.keys(conversionTypes) as category}
-            <option value={category}>{category}</option>
+    <div class="conversor-mobile">
+      <!-- Seletor de categoria -->
+      <div class="seletor-categoria">
+        <select bind:value={categoriaSelecionada} on:change={() => selecionarCategoria(categoriaSelecionada)}>
+          {#each Object.keys(tiposDeConversao) as categoria}
+            <option value={categoria}>{categoria}</option>
           {/each}
         </select>
       </div>
       
-      <div class="conversion-selector">
-        <select bind:value={selectedConversion} on:change={() => selectConversion(selectedConversion)}>
-          {#each conversionTypes[selectedCategory] as conversion}
-            <option value={conversion}>{conversion.name}</option>
+      <!-- Seletor de conversão -->
+      <div class="seletor-conversao">
+        <select bind:value={conversaoSelecionada} on:change={() => selecionarConversao(conversaoSelecionada)}>
+          {#each tiposDeConversao[categoriaSelecionada] as conversao}
+            <option value={conversao}>{conversao.nome}</option>
           {/each}
         </select>
       </div>
       
-      <div class="conversion-area">
-        <div class="input-section">
-          <label>Valor em {selectedConversion?.from}:</label>
-          <input 
-            type="number" 
-            bind:value={inputValue}
-            on:input={calculate}
+      <!-- Área de entrada e resultado -->
+      <div class="area-conversao">
+        <div class="entrada-valor">
+          <label>Valor em {conversaoSelecionada?.de}:</label>
+          <input
+            type="number"
+            bind:value={valorEntrada}
+            on:input={calcular}
             placeholder="Digite o valor"
           />
         </div>
         
-        <div class="result-section">
-          <label>Resultado em {selectedConversion?.to}:</label>
-          <div class="result">
-            {resultValue || "---"}
+        <div class="resultado-valor">
+          <label>Resultado em {conversaoSelecionada?.para}:</label>
+          <div class="resultado">
+            {valorResultado || "---"}
           </div>
         </div>
-
-
       </div>
     </div>
   </main>
 </div>
 
 <style>
-   :global(body) {
+  :global(body) {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -183,7 +198,7 @@
     height: 100vh;
   }
 
-  .converter-app {
+  .app-conversor {
     max-width: 100%;
     margin: 0 auto;
     padding: 20px;
@@ -197,7 +212,7 @@
     margin-bottom: 20px;
   }
 
-  .time-display {
+  .exibe-hora {
     font-size: 1rem;
     color: #f5f5f5;
   }
@@ -209,12 +224,12 @@
     font-weight: bold;
   }
 
-  .subtitle {
+  .subtitulo {
     color: #ffffff;
     font-size: 1.1rem;
   }
 
-  .mobile-converter {
+  .conversor-mobile {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -230,7 +245,7 @@
     margin-bottom: 10px;
   }
 
-  .conversion-area {
+  .area-conversao {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 15px;
@@ -238,7 +253,7 @@
     flex-grow: 1;
   }
 
-  .input-section, .result-section {
+  .entrada-valor, .resultado-valor {
     margin-bottom: 20px;
   }
 
@@ -263,39 +278,16 @@
     outline: none;
   }
 
-  .calculate-btn {
-    padding: 15px;
-    background-color: #e3f4ff;
-    color: rgba(0, 0, 0, 0.89);
-    border: none;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .calculate-btn:hover {
-    background-color: #1d90dd;
-  }
-
-  .result {
+  .resultado {
     font-size: 1.5rem;
     font-weight: bold;
     color: #333;
     margin-top: 10px;
   }
 
-  .icon {
-    margin-right: 10px;
-  }
-  
   @media (max-width: 768px) {
-    .converter-app {
+    .app-conversor {
       padding: 10px;
-    }
-
-    .calculate-btn {
-      font-size: 1rem;
     }
   }
 </style>
