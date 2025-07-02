@@ -14,6 +14,8 @@
         <li class="nav-item"><a class="nav-link active" href="/lista">Lista</a></li>
         <li class="nav-item"><a class="nav-link active" href="/clique">Clicks</a></li>
         <li class="nav-item"><a class="nav-link active" href="/palin">Palindromo</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/velha">Jogo da velha</a></li>
+
 
         <li class="nav-item"><a class="nav-link active" href="/timer">timer</a></li>
 
