@@ -1,28 +1,24 @@
 <script>
-	import { onMount } from "svelte";
-
-	let tabuleiro;
-	let jogadorAtual;
-	let mensagem;
-
-	onMount(() => {
-		resetar();
-	});
+	let tabuleiro = Array(9).fill("");
+	let jogadorAtual = "X";
+	let mensagem = "";
 
 	function clicarCasa(i) {
 		if (tabuleiro[i] === "") {
 			tabuleiro[i] = jogadorAtual;
 			jogadorAtual = jogadorAtual === "X" ? "O" : "X";
 			mensagem = "";
+			tabuleiro = [...tabuleiro];
 		} else {
 			mensagem = "Casa ocupada!";
 		}
 	}
 
-	function resetar() {
+	function reiniciar() {
 		tabuleiro = Array(9).fill("");
 		jogadorAtual = "X";
 		mensagem = "";
+		tabuleiro = [...tabuleiro];
 	}
 </script>
 
@@ -67,4 +63,4 @@
 	<div class="mensagem">{mensagem}</div>
 {/if}
 
-<button on:click={resetar}>Reiniciar</button>
+<button on:click={reiniciar}>Reiniciar</button>
